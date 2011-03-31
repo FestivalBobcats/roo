@@ -2,6 +2,7 @@ module Roo
   class Spreadsheet
     class << self
       def open(file)
+        file = File === file ? file.path : file
         case File.extname(file)
         when '.xls'
           Excel.new(file)
@@ -23,6 +24,7 @@ end
 
 require 'roo/version'
 # require 'roo/spreadsheetparser' TODO:
+require 'roo/worksheet'
 require 'roo/generic_spreadsheet' 
 require 'roo/openoffice'
 require 'roo/excel'
