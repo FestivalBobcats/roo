@@ -1,3 +1,5 @@
+$:.unshift(File.dirname(__FILE__))
+
 module Roo
   class Spreadsheet
     class << self
@@ -22,23 +24,13 @@ module Roo
   end
 end
 
-%w(version
-   generic_spreadsheet
-   openoffice
-   excel
-   excelx
-   google
-   excel2003xml
-   roo_rails_helper
-   worksheet).each {|f| puts "requiring #{f}";require "./roo/#{f}"}
-
-# require 'roo/version'
-# # require 'roo/spreadsheetparser' TODO:
-# require 'roo/generic_spreadsheet' 
-# require 'roo/openoffice'
-# require 'roo/excel'
-# require 'roo/excelx'
-# require 'roo/google'
-# require 'roo/excel2003xml'
-# require 'roo/roo_rails_helper'
-# require 'roo/worksheet'
+require 'roo/version'
+# require 'roo/spreadsheetparser' TODO:
+require 'roo/generic_spreadsheet' 
+require 'roo/openoffice'
+require 'roo/excel'
+require 'roo/excelx'
+require 'roo/google'
+require 'roo/excel2003xml'
+require 'roo/roo_rails_helper'
+require 'roo/worksheet'
