@@ -38,3 +38,4 @@ require 'roo/google'
 # require 'roo/excel2003xml' TODO: convert to nokogiri
 require 'roo/roo_rails_helper'
 require 'roo/worksheet'
+require 'roo/html'
