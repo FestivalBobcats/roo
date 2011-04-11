@@ -404,11 +404,12 @@ class GenericSpreadsheet
     # odd unicode characters and white spaces around columns
 
     def each(options={})
-      if options[:clean]
-        options.delete(:clean)
+      unless options[:clean] == false
         @cleaned ||= {}
         @cleaned[@default_sheet] || clean_sheet
       end
+      
+      options.delete(:clean)
 
       if options.empty?
         @header_line = 1
