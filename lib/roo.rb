@@ -5,20 +5,24 @@ module Roo
     class << self
       def open(file)
         file = String === file ? file : file.path
-        case File.extname(file)
-        when '.xls'
-          Excel.new(file)
-        when '.xlsx'
-          Excelx.new(file)
-        when '.ods'
-          Openoffice.new(file)
-        when '.xml'
-          Excel2003XML.new(file)
-        when ''
-          Google.new(file)
-        else
-          raise ArgumentError, "Don't know how to open file #{file}"
-        end      
+        begin
+          case File.extname(file)
+          when '.xls'
+            Excel.new(file)
+          when '.xlsx'
+            Excelx.new(file)
+          when '.ods'
+            Openoffice.new(file)
+          when '.xml'
+            Excel2003XML.new(file)
+          when ''
+            Google.new(file)
+          else
+            raise ArgumentError, "Don't know how to open file #{file}"
+          end
+        rescue Ole::Storage::FormatError
+          HTML.new(file)
+        end
       end
     end
   end
