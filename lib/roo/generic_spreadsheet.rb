@@ -373,7 +373,7 @@ class GenericSpreadsheet
     # access different worksheets by calling spreadsheet.sheet(1)
     # or spreadsheet.sheet('SHEETNAME')
     def sheet(index,name=false)
-      @default_sheet = String === index ? index : self.sheets[index]
+      self.default_sheet = String === index ? index : self.sheets[index]
       name ? [@default_sheet,self] : self
     end
 
@@ -522,7 +522,6 @@ class GenericSpreadsheet
   private
   
   def clean_sheet
-    puts 'Cleaning...'
     read_cells(@default_sheet) unless @cells_read[@default_sheet]
     @cell = Hash[
               @cell.map do |k,v|
